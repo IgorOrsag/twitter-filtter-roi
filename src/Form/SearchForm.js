@@ -1,9 +1,9 @@
 import React from 'react';
 import { FieldGroup } from './FieldsFactory';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 export const SearchForm = ({ handleSubmit, handleChange }) => (
-  <form onSubmit={handleSubmit}>
+  <Form inline onSubmit={handleSubmit}>
     <FieldGroup
       id="userName"
       type="text"
@@ -11,9 +11,9 @@ export const SearchForm = ({ handleSubmit, handleChange }) => (
       name="userName"
       //   label="Text"
       placeholder="Enter twitter user"
-    />
-    <Button class="btn-primary" value="submit" type="submit">
+    />{' '}
+    <Button className="btn btn-primary" value="submit" type="submit">
       Search
     </Button>
-  </form>
+  </Form>
 );

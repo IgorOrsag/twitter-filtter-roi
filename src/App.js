@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { TweetList } from './Tweet/TweetList';
+import { Provider } from 'react-redux';
+import TweetList from './Tweet/TweetList';
 import { Menu } from './Tweet/Menu';
+import configureStore from './store';
 import './App.css';
 
+const store = configureStore();
 class App extends Component {
   render() {
     return (
       <div>
         {/* <header className="App-header" /> */}
-        <Menu />
-        <TweetList />
+        <Provider store={store}>
+          <>
+            <Menu />
+            <TweetList />
+          </>
+        </Provider>
       </div>
     );
   }
