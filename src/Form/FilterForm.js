@@ -3,7 +3,7 @@ import { FieldGroup } from './FieldsFactory';
 import { Button } from 'react-bootstrap';
 
 export const FilterForm = ({ handleSubmit, handleChange }) => (
-  <form onSubmit={handleSubmit}>
+  <form className="form" onSubmit={handleSubmit}>
     <FieldGroup
       id="userName"
       type="text"

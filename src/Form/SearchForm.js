@@ -3,7 +3,7 @@ import { FieldGroup } from './FieldsFactory';
 import { Button, Form } from 'react-bootstrap';
 
 export const SearchForm = ({ handleSubmit, handleChange }) => (
-  <Form inline onSubmit={handleSubmit}>
+  <Form className="form" inline onSubmit={handleSubmit}>
     <FieldGroup
       id="userName"
       type="text"

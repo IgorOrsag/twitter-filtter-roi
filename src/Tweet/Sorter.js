@@ -12,6 +12,7 @@ const Sorter = ({ sortDateAsc, sortDateDesc }) => {
   return (
     <>
       <button
+        className="btn btn-default"
         onClick={() => {
           isASC ? sortDateAsc() : sortDateDesc();
           setIsASC(!isASC);
