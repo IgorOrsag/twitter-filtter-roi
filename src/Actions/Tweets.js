@@ -1,19 +1,14 @@
-import {
-  SET_TWEETS,
-  EMBED_TWEETS,
-  SORT_DATE_ASC,
-  SORT_DATE_DESC
-} from './Constants';
+import * as ACTIONS from './Constants';
 import {
   fetchTweets,
-  fetchFakeTweets,
-  fetchEmbed
+  fetchFakeTweets
+  // fetchEmbed
 } from './../Request/TwitterRequest';
 
 export const setTweets = params => async dispatch => {
   const res = await fetchTweets(params);
   dispatch({
-    type: SET_TWEETS,
+    type: ACTIONS.SET_TWEETS,
     payload: res.body
   });
   return res.body;
@@ -21,13 +16,25 @@ export const setTweets = params => async dispatch => {
 
 export const sortDateAsc = () => dispatch => {
   return dispatch({
-    type: SORT_DATE_ASC
+    type: ACTIONS.SORT_DATE_ASC
   });
 };
 
 export const sortDateDesc = () => dispatch => {
   return dispatch({
-    type: SORT_DATE_DESC
+    type: ACTIONS.SORT_DATE_DESC
+  });
+};
+
+export const sortLikesAsc = () => dispatch => {
+  return dispatch({
+    type: ACTIONS.SORT_LIKES_ASC
+  });
+};
+
+export const sortLikesDesc = () => dispatch => {
+  return dispatch({
+    type: ACTIONS.SORT_LIKES_DESC
   });
 };
 
@@ -35,7 +42,7 @@ export const setFakeTweets = params => dispatch => {
   const tweets = fetchFakeTweets().statuses;
 
   dispatch({
-    type: SET_TWEETS,
+    type: ACTIONS.SET_TWEETS,
     payload: tweets
   });
   return tweets;
@@ -61,14 +68,14 @@ export const setFakeTweets = params => dispatch => {
 //   return embedded;
 // };
 
-const getEmbeded = tweets => {
-  return Promise.all(
-    tweets.statuses.map(async tweet => {
-      const {
-        entities: { urls }
-      } = tweet;
-      const { html } = await fetchEmbed(urls[0].expanded_url);
-      return { ...tweet, html };
-    })
-  );
-};
+// const getEmbeded = tweets => {
+//   return Promise.all(
+//     tweets.statuses.map(async tweet => {
+//       const {
+//         entities: { urls }
+//       } = tweet;
+//       const { html } = await fetchEmbed(urls[0].expanded_url);
+//       return { ...tweet, html };
+//     })
+//   );
+// };

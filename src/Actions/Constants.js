@@ -1,5 +1,8 @@
 export const SET_TWEETS = 'SET_TWEETS';
+
 export const SORT_DATE_ASC = 'SORT_DATE_ASC';
 export const SORT_DATE_DESC = 'SORT_DATE_DESC';
+export const SORT_LIKES_ASC = 'SORT_LIKES_ASC';
+export const SORT_LIKES_DESC = 'SORT_LIKES_DESC';
 
 export const EMBED_TWEETS = 'EMBED_TWEETS';

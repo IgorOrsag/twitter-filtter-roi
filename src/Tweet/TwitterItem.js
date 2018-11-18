@@ -7,6 +7,7 @@ export const TwitterItem = props => {
     <>
       <p>{props.text}</p>
       <p>{props.date}</p>
+      <p>{props.favorite_count} likes</p>
     </>
   );
 };
