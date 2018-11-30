@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { SearchForm } from '../Form/SearchForm';
-import { setTweets, setFakeTweets } from '../Actions/Tweets';
-
-const mapDispatchToProps = { setFakeTweets };
+import { setTweets } from '../Actions/Tweets';
+const mapDispatchToProps = { setTweets };
 
 const Search = props => {
   console.log(props);
@@ -15,7 +14,7 @@ const Search = props => {
       handleSubmit={event => {
         event.preventDefault();
         console.log('hello', formState);
-        props.setFakeTweets(formState);
+        props.setTweets(formState);
       }}
       handleChange={event => {
         const { name, value } = event.target;

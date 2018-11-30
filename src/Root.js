@@ -3,10 +3,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './store';
+import { setToken, removeToken } from './Request/AuthApi';
+
 import './App.css';
 
 const store = configureStore();
 class Root extends Component {
+  componentDidMount() {
+    setToken();
+  }
   render() {
     return (
       <div>
