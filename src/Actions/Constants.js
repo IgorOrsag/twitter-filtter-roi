@@ -1,8 +1,10 @@
 export const SET_TWEETS = 'SET_TWEETS';
 
-export const SORT_DATE_ASC = 'SORT_DATE_ASC';
-export const SORT_DATE_DESC = 'SORT_DATE_DESC';
-export const SORT_LIKES_ASC = 'SORT_LIKES_ASC';
-export const SORT_LIKES_DESC = 'SORT_LIKES_DESC';
+export const SORT_TWEETS = 'SORT_TWEETS';
 
-export const EMBED_TWEETS = 'EMBED_TWEETS';
+export const SORT = {
+  DATE_ASC: 'DATE_ASC',
+  DATE_DESC: 'DATE_DESC',
+  LIKES_ASC: 'LIKES_ASC',
+  LIKES_DESC: 'LIKES_DESC'
+};

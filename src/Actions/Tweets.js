@@ -16,25 +16,29 @@ export const setTweets = params => async dispatch => {
 
 export const sortDateAsc = () => dispatch => {
   return dispatch({
-    type: ACTIONS.SORT_DATE_ASC
+    type: ACTIONS.SORT_TWEETS,
+    sortType: ACTIONS.SORT.DATE_ASC
   });
 };
 
 export const sortDateDesc = () => dispatch => {
   return dispatch({
-    type: ACTIONS.SORT_DATE_DESC
+    type: ACTIONS.SORT_TWEETS,
+    sortType: ACTIONS.SORT.DATE_DESC
   });
 };
 
 export const sortLikesAsc = () => dispatch => {
   return dispatch({
-    type: ACTIONS.SORT_LIKES_ASC
+    type: ACTIONS.SORT_TWEETS,
+    sortType: ACTIONS.SORT.LIKES_ASC
   });
 };
 
 export const sortLikesDesc = () => dispatch => {
   return dispatch({
-    type: ACTIONS.SORT_LIKES_DESC
+    type: ACTIONS.SORT_TWEETS,
+    sortType: ACTIONS.SORT.LIKES_DESC
   });
 };
 
