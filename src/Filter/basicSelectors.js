@@ -1,3 +1,5 @@
+
+
 export const mentionCountSelector = (state, { filter: { mentionCount } }) =>
   mentionCount && {
     ...mentionCount,

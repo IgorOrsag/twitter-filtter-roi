@@ -16,6 +16,12 @@ const NOT_EQUAL = {
   operator: FILTER_OPERATORS.NOT_EQUAL
 };
 
+const INCLUDES = { label: 'Includes', operator: FILTER_OPERATORS.INCLUDES };
+const NOT_INCLUDES = {
+  label: 'Not includes',
+  operator: FILTER_OPERATORS.NOT_INCLUDES
+};
+
 export const DATE_OPERATORS = [
   GREATER,
   GREATER_INCL,
@@ -25,11 +31,4 @@ export const DATE_OPERATORS = [
   NOT_EQUAL
 ];
 
-export const LIKE_OPERATORS = [
-  GREATER,
-  GREATER_INCL,
-  LESS,
-  LESS_INCL,
-  EQUAL,
-  NOT_EQUAL
-];
+export const TEXT_OPERATORS = [INCLUDES, NOT_INCLUDES];

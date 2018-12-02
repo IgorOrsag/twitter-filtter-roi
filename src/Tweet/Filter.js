@@ -13,13 +13,26 @@ const mapDispatchToProps = { setTweets };
 const defaultFiledState = { value: '', operator: FILTER_OPERATORS.EQUAL };
 
 const Filter = ({ setTweets, location, history, filterState, userName }) => {
-  const { date, like, mentionCount, hashtagCount } = filterState;
+  const {
+    date,
+    like,
+    tweetLength,
+    mentionCount,
+    hashtagCount,
+    occurance,
+    mentionMatch,
+    hashtagMatch
+  } = filterState;
   const [formState, setFormState] = useState({
     userName: userName,
     date: date || defaultFiledState,
     like: like || defaultFiledState,
+    tweetLength: tweetLength || defaultFiledState,
     mentionCount: mentionCount || defaultFiledState,
-    hashtagCount: hashtagCount || defaultFiledState
+    hashtagCount: hashtagCount || defaultFiledState,
+    occurance: occurance || defaultFiledState,
+    mentionMatch: mentionMatch || defaultFiledState,
+    hashtagMatch: hashtagMatch || defaultFiledState
   });
   return (
     <FilterForm

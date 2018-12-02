@@ -12,6 +12,7 @@ export const parseTweet = tweet => {
   return {
     id,
     text,
+    tweetLength: text.length,
     favorite_count,
     dateTimestamp,
     user_mentions,

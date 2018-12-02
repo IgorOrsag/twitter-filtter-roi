@@ -7,10 +7,7 @@ import { TwitterItem } from './TwitterItem';
 import getFilteredTweets from './../Filter';
 import { getParams } from './../Utils/router';
 
-// import { FILTER_OPERATORS } from './../Filter/operators';
-
 const TweetList = ({ tweets }) => {
-  // console.log(JSON.stringify(tweets));
   return (
     <ListGroup>
       {tweets.map(tweet => (
@@ -21,11 +18,6 @@ const TweetList = ({ tweets }) => {
     </ListGroup>
   );
 };
-
-// const filter = {
-//   date: { operator: FILTER_OPERATORS.LESS, value: Date.now() },
-//   like: { operator: FILTER_OPERATORS.LESS, value: 1000 }
-// };
 
 const mapStateToProps = (state, { location: { search } }) => {
   return {

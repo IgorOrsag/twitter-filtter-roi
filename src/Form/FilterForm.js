@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldGroup } from './FieldsFactory';
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { DATE_OPERATORS } from './enum';
+import { DATE_OPERATORS, TEXT_OPERATORS } from './enum';
 
 export const FilterForm = ({
   handleSubmit,
@@ -40,6 +40,15 @@ export const FilterForm = ({
       name="like"
       label="Likes"
     />
+    <FieldGroup
+      id="tweetLength"
+      type="number"
+      state={state.tweetLength}
+      onChange={handleChange}
+      operators={DATE_OPERATORS}
+      name="tweetLength"
+      label="Tweet length"
+    />
 
     <FieldGroup
       id="mentionCount"
@@ -61,13 +70,35 @@ export const FilterForm = ({
       label="Hashtag count"
     />
 
-    {/* datepicker */}
-    {/* length */}
-    {/* number of likes */}
-    {/* number of mentions (eg. @user) */}
-    {/* hashtags (eg. #hashtag)  */}
-    {/* substring occurance */}
-    {/* exact match for mention or hashtag */}
+    <FieldGroup
+      id="occurance"
+      type="text"
+      state={state.occurance}
+      onChange={handleChange}
+      operators={TEXT_OPERATORS}
+      name="occurance"
+      label="Substring occurance"
+    />
+
+    <FieldGroup
+      id="mentionMatch"
+      type="text"
+      state={state.mentionMatch}
+      onChange={handleChange}
+      operators={TEXT_OPERATORS}
+      name="mentionMatch"
+      label="Mention match"
+    />
+
+    <FieldGroup
+      id="hashtagMatch"
+      type="text"
+      state={state.hashtagMatch}
+      onChange={handleChange}
+      operators={TEXT_OPERATORS}
+      name="hashtagMatch"
+      label="Hashtag match"
+    />
     <Button className="btn btn-primary" value="submit" type="submit">
       Search
     </Button>

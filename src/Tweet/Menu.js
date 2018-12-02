@@ -11,7 +11,7 @@ export const Menu = ({ hasTweets }) => {
     <div className="form-r">
       {isFilter ? <Filter /> : <Search />}
 
-      {hasTweets ? (
+      {true ? (
         <div className="sort">
           <button
             className="btn btn-default"
