@@ -41,6 +41,26 @@ export const FilterForm = ({
       label="Likes"
     />
 
+    <FieldGroup
+      id="mentionCount"
+      type="number"
+      state={state.mentionCount}
+      onChange={handleChange}
+      operators={DATE_OPERATORS}
+      name="mentionCount"
+      label="Mention count"
+    />
+
+    <FieldGroup
+      id="hashtagCount"
+      type="number"
+      state={state.hashtagCount}
+      onChange={handleChange}
+      operators={DATE_OPERATORS}
+      name="hashtagCount"
+      label="Hashtag count"
+    />
+
     {/* datepicker */}
     {/* length */}
     {/* number of likes */}
@@ -51,7 +71,11 @@ export const FilterForm = ({
     <Button className="btn btn-primary" value="submit" type="submit">
       Search
     </Button>
-    <Button className="btn btn-primary" onClick={handleFilter} type="button">
+    <Button
+      className="btn btn-primary m10"
+      onClick={handleFilter}
+      type="button"
+    >
       Filter
     </Button>
   </form>

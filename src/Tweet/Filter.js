@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { last, head, omit } from 'lodash';
+import { last, head, omit, omitBy } from 'lodash';
 import { FilterForm } from '../Form/FilterForm';
 import { setTweets } from '../Actions/Tweets';
 import { getParams, getUserName } from './../Utils/router';
@@ -10,14 +10,16 @@ import { FILTER_OPERATORS } from './../Filter/operators';
 
 const mapDispatchToProps = { setTweets };
 
-const defaultFiledState = { value: null, operator: FILTER_OPERATORS.EQUAL };
+const defaultFiledState = { value: '', operator: FILTER_OPERATORS.EQUAL };
 
 const Filter = ({ setTweets, location, history, filterState, userName }) => {
-  // console.log(filterState);
+  const { date, like, mentionCount, hashtagCount } = filterState;
   const [formState, setFormState] = useState({
     userName: userName,
-    date: filterState.date || defaultFiledState,
-    like: filterState.like || defaultFiledState
+    date: date || defaultFiledState,
+    like: like || defaultFiledState,
+    mentionCount: mentionCount || defaultFiledState,
+    hashtagCount: hashtagCount || defaultFiledState
   });
   return (
     <FilterForm
@@ -36,7 +38,10 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
         history.push({
           ...location,
           search: `?userName=${formState.userName}&filter=${JSON.stringify(
-            omit(formState, 'userName')
+            omitBy(
+              omit(formState, 'userName'),
+              ({ value }) => value === defaultFiledState.value
+            )
           )}`
         });
       }}

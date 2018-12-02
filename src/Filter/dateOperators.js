@@ -1,12 +1,12 @@
 import { FILTER_OPERATORS } from './operators';
-import { filter, isUndefined } from 'lodash';
+import { filter, isUndefined, isEmpty } from 'lodash';
 
-export const filterNumeric = (tweets, filterParams) => {
+export const filterDate = (tweets, filterParams) => {
   if (isUndefined(filterParams)) {
     return tweets;
   }
   const { operator, value, tweetProp } = filterParams;
-  if (value === '') {
+  if (!value) {
     return tweets;
   }
   switch (operator) {
