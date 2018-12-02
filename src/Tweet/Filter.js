@@ -4,27 +4,40 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { last, head, omit } from 'lodash';
 import { FilterForm } from '../Form/FilterForm';
-import { setTweets, setFakeTweets } from '../Actions/Tweets';
-import { getParams } from './../Utils/router';
+import { setTweets } from '../Actions/Tweets';
+import { getParams, getUserName } from './../Utils/router';
+import { FILTER_OPERATORS } from './../Filter/operators';
 
-const mapDispatchToProps = { setFakeTweets };
+const mapDispatchToProps = { setTweets };
 
-const Filter = ({ location, history, filterState }) => {
+const defaultFiledState = { value: null, operator: FILTER_OPERATORS.EQUAL };
+
+const Filter = ({ setTweets, location, history, filterState, userName }) => {
   // console.log(filterState);
   const [formState, setFormState] = useState({
-    userName: null,
-    date: filterState.date
+    userName: userName,
+    date: filterState.date || defaultFiledState,
+    like: filterState.like || defaultFiledState
   });
-  console.log(formState);
   return (
     <FilterForm
       state={formState}
       handleSubmit={event => {
         event.preventDefault();
-        console.log('hello', formState);
+        setTweets({ userName: formState.userName });
         history.push({
           ...location,
-          search: `?filter=${JSON.stringify(omit(formState, 'userName'))}`
+          search: `?userName=${formState.userName}`
+        });
+      }}
+      handleFilter={event => {
+        event.preventDefault();
+
+        history.push({
+          ...location,
+          search: `?userName=${formState.userName}&filter=${JSON.stringify(
+            omit(formState, 'userName')
+          )}`
         });
       }}
       handleChange={event => {
@@ -40,21 +53,18 @@ const Filter = ({ location, history, filterState }) => {
           }
         });
       }}
-      handleFilterChange={event => {
-        const { name, value } = event.target;
-        setFormState({ ...formState, [name]: value });
-      }}
     />
   );
 };
 const mapStateToProps = (state, { location, history }) => {
   const filterState = getParams(location.search, 'filter');
+  const userName = getUserName(location.search);
 
   return {
-    counter: state.counter,
     location,
     history,
-    filterState
+    filterState,
+    userName
   };
 };
 

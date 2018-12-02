@@ -4,10 +4,16 @@ import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { DATE_OPERATORS } from './enum';
 
-export const FilterForm = ({ handleSubmit, handleChange, state }) => (
+export const FilterForm = ({
+  handleSubmit,
+  handleFilter,
+  handleChange,
+  state
+}) => (
   <form className="form" onSubmit={handleSubmit}>
     <FormControl
       id="userName"
+      value={state.userName}
       type="text"
       onChange={handleChange}
       name="userName"
@@ -25,6 +31,16 @@ export const FilterForm = ({ handleSubmit, handleChange, state }) => (
       placeholder="Enter twitter user"
     />
 
+    <FieldGroup
+      id="like"
+      type="number"
+      state={state.like}
+      onChange={handleChange}
+      operators={DATE_OPERATORS}
+      name="like"
+      label="Likes"
+    />
+
     {/* datepicker */}
     {/* length */}
     {/* number of likes */}
@@ -34,6 +50,9 @@ export const FilterForm = ({ handleSubmit, handleChange, state }) => (
     {/* exact match for mention or hashtag */}
     <Button className="btn btn-primary" value="submit" type="submit">
       Search
+    </Button>
+    <Button className="btn btn-primary" onClick={handleFilter} type="button">
+      Filter
     </Button>
   </form>
 );
