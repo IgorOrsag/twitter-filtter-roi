@@ -1,10 +1,10 @@
 import React from 'react';
-import { FieldGroup } from './FieldsFactory';
+import { FormControl } from 'react-bootstrap';
 import { Button, Form } from 'react-bootstrap';
 
 export const SearchForm = ({ handleSubmit, handleChange }) => (
   <Form className="form" inline onSubmit={handleSubmit}>
-    <FieldGroup
+    <FormControl
       id="userName"
       type="text"
       onChange={handleChange}

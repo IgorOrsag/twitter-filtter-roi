@@ -1,10 +1,12 @@
 import React from 'react';
 import { FieldGroup } from './FieldsFactory';
+import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { DATE_OPERATORS } from './enum';
 
-export const FilterForm = ({ handleSubmit, handleChange }) => (
+export const FilterForm = ({ handleSubmit, handleChange, state }) => (
   <form className="form" onSubmit={handleSubmit}>
-    <FieldGroup
+    <FormControl
       id="userName"
       type="text"
       onChange={handleChange}
@@ -15,11 +17,14 @@ export const FilterForm = ({ handleSubmit, handleChange }) => (
     <FieldGroup
       id="date"
       type="date"
+      state={state.date}
       onChange={handleChange}
+      operators={DATE_OPERATORS}
       name="date"
       label="Date"
       placeholder="Enter twitter user"
     />
+
     {/* datepicker */}
     {/* length */}
     {/* number of likes */}

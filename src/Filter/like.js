@@ -1,12 +1,16 @@
 import { createSelector } from 'reselect';
-import { filter } from 'lodash';
+import { filter, isUndefined } from 'lodash';
 import { tweetsSelector, likeSelector } from './basicSelectors';
 import { FILTER_OPERATORS } from './operators';
 
 export const filterLikeSelector = createSelector(
   tweetsSelector,
   likeSelector,
-  (tweets, { operator, value }) => {
+  (tweets, filterParams) => {
+    if (isUndefined(filterParams)) {
+      return tweets;
+    }
+    const { operator, value } = filterParams;
     switch (operator) {
       case FILTER_OPERATORS.GREATER:
         return tweets;
