@@ -24,7 +24,45 @@
 
 .form-r {
   margin: 20px;
-  width: 400px;
+  /* width: 400px; */
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet-text {
+  font-size: large;
+  margin: 25px 0px 25px;
+}
+
+.tweet-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.name-container {
+  margin-left: 10px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  margin: 10px;
+}
+.search {
+  width: auto;
 }
 
 .sort {

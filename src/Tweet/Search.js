@@ -9,7 +9,7 @@ import { getUserName } from './../Utils/router';
 const mapDispatchToProps = { setTweets };
 
 const Search = ({ location, history, userName, setTweets }) => {
-  const [formState, setFormState] = useState({ userName: userName || null });
+  const [formState, setFormState] = useState({ userName: userName || '' });
   return (
     <SearchForm
       state={formState}

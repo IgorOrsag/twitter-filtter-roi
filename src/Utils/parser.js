@@ -6,7 +6,8 @@ export const parseTweet = tweet => {
     text,
     favorite_count,
     id,
-    entities: { user_mentions, hashtags }
+    entities: { user_mentions, hashtags },
+    user: {profile_image_url, name, screen_name}
   } = tweet;
   const dateTimestamp = Date.parse(created_at);
   return {
@@ -19,6 +20,11 @@ export const parseTweet = tweet => {
     mentionCount: user_mentions.length,
     hashtags,
     hashtagCount: hashtags.length,
-    date: format(dateTimestamp, 'DD.MM.YY HH:mm')
+    date: format(dateTimestamp, 'DD.MM.YY HH:mm'),
+    user: {
+      profile_image_url,
+      name,
+      screen_name
+    }
   };
 };

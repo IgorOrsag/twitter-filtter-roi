@@ -16,7 +16,7 @@ export const FieldGroup = ({
   ...rest
 }) => {
   return (
-    <>
+    <div className="filter-item">
       <FormGroup controlId={`${id}.value`}>
         <ControlLabel>{label}</ControlLabel>
         <FormControl name={`${name}.value`} value={state.value} {...rest} />
@@ -41,6 +41,6 @@ export const FieldGroup = ({
 
         {help && <HelpBlock>{help}</HelpBlock>}
       </FormGroup>
-    </>
+    </div>
   );
 };
