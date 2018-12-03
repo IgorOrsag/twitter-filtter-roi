@@ -13,11 +13,12 @@ export const Menu = ({ hasTweets }) => {
 
       {true ? (
         <div className="flex-container">
+          <button className="btn btn-default filter-item">Stats</button>
           <button
             className="btn btn-default filter-item"
             onClick={() => setIsFilter(!isFilter)}
           >
-            {isFilter ? 'hide filter' : 'show filter'}
+            {isFilter ? 'Hide filter' : 'Show filter'}
           </button>
           <Sorter />
         </div>

@@ -24,7 +24,7 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
     hashtagMatch
   } = filterState;
   const [formState, setFormState] = useState({
-    userName: userName,
+    userName: userName || '',
     date: date || defaultFiledState,
     like: like || defaultFiledState,
     tweetLength: tweetLength || defaultFiledState,
@@ -58,7 +58,7 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
           )}`
         });
       }}
-      handleChange={event => {
+      handleFilterChange={event => {
         const { name, value } = event.target;
         const params = name.split('.');
         const filterName = head(params);
@@ -69,6 +69,13 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
             ...formState[filterName],
             [filterProperty]: value
           }
+        });
+      }}
+      handleChange={event => {
+        const { name, value } = event.target;
+        setFormState({
+          ...formState,
+          [name]: value
         });
       }}
     />
