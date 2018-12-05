@@ -11,6 +11,10 @@ import { FILTER_OPERATORS } from './../Filter/operators';
 const mapDispatchToProps = { setTweets };
 
 const defaultFiledState = { value: '', operator: FILTER_OPERATORS.EQUAL };
+const defaultMatchFiledState = {
+  value: '',
+  operator: FILTER_OPERATORS.INCLUDES
+};
 
 const Filter = ({ setTweets, location, history, filterState, userName }) => {
   const {
@@ -30,9 +34,9 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
     tweetLength: tweetLength || defaultFiledState,
     mentionCount: mentionCount || defaultFiledState,
     hashtagCount: hashtagCount || defaultFiledState,
-    occurance: occurance || defaultFiledState,
-    mentionMatch: mentionMatch || defaultFiledState,
-    hashtagMatch: hashtagMatch || defaultFiledState
+    occurance: occurance || defaultMatchFiledState,
+    mentionMatch: mentionMatch || defaultMatchFiledState,
+    hashtagMatch: hashtagMatch || defaultMatchFiledState
   });
   return (
     <FilterForm

@@ -13,7 +13,7 @@ export const filterText = (tweets, filterParams) => {
     case FILTER_OPERATORS.INCLUDES:
       return filter(tweets, tweet => tweet[tweetProp].indexOf(value) !== -1);
     case FILTER_OPERATORS.NOT_INCLUDES:
-      return filter(tweets, tweet => tweet[tweetProp].indexOf(value) !== -1);
+      return filter(tweets, tweet => tweet[tweetProp].indexOf(value) === -1);
     default:
       return tweets;
   }

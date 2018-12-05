@@ -14,6 +14,13 @@ export const setTweets = params => async dispatch => {
   return res.body;
 };
 
+export const toggleStats = isToggled => dispatch => {
+  return dispatch({
+    type: ACTIONS.TOGGLE_STATS,
+    payload: isToggled
+  });
+};
+
 export const sortDateAsc = () => dispatch => {
   return dispatch({
     type: ACTIONS.SORT_TWEETS,
@@ -51,35 +58,3 @@ export const setFakeTweets = params => dispatch => {
   });
   return tweets;
 };
-
-// export const setFakeTweets = params => async dispatch => {
-//   const tweets = fetchFakeTweets();
-//   const embedded = await getEmbeded(tweets);
-
-//   dispatch({
-//     type: SET_TWEETS,
-//     payload: embedded
-//   });
-//   return embedded;
-// };
-
-// export const embedTweets = tweets => async dispatch => {
-//   const embedded = getEmbeded(tweets);
-//   dispatch({
-//     type: EMBED_TWEETS,
-//     payload: embedded
-//   });
-//   return embedded;
-// };
-
-// const getEmbeded = tweets => {
-//   return Promise.all(
-//     tweets.statuses.map(async tweet => {
-//       const {
-//         entities: { urls }
-//       } = tweet;
-//       const { html } = await fetchEmbed(urls[0].expanded_url);
-//       return { ...tweet, html };
-//     })
-//   );
-// };

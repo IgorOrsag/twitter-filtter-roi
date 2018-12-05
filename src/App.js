@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+
 import TweetList from './Tweet/TweetList';
-import { Menu } from './Tweet/Menu';
+import Menu from './Tweet/Menu';
 
 import './App.css';
-const App = ({ tweets }) => {
+const App = () => {
   return (
     <>
-      <Menu hasTweets={tweets.length ? true : false} />
-      <TweetList tweets={tweets} />
+      <Menu />
+      <TweetList />
     </>
   );
 };
 
-const mapStateToProps = state => ({ tweets: state.tweets });
-
-export default connect(mapStateToProps)(App);
+export default App;

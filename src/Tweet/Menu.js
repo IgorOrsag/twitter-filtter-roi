@@ -1,14 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { toggleStats } from './../Actions/Tweets';
 
 import Filter from './Filter';
 import Search from './Search';
 import Sorter from './Sorter';
-import { Stats } from './Stats';
 
-export const Menu = ({ hasTweets }) => {
+export const Menu = ({ hasTweets, toggleStats }) => {
   const [isFilter, setIsFilter] = useState(hasTweets);
-  const [show, setShow] = useState(false);
+  console.log(hasTweets);
   return (
     <div className="form-r">
       {isFilter ? <Filter /> : <Search />}
@@ -17,7 +18,7 @@ export const Menu = ({ hasTweets }) => {
         <div className="flex-container">
           <button
             className="btn btn-default filter-item"
-            onClick={() => setShow(true)}
+            onClick={() => toggleStats(true)}
           >
             Stats
           </button>
@@ -28,9 +29,19 @@ export const Menu = ({ hasTweets }) => {
             {isFilter ? 'Hide filter' : 'Show filter'}
           </button>
           <Sorter />
-          <Stats show={show} handleHide={() => setShow(false)} />
         </div>
       ) : null}
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    hasTweets: state.tweets.length ? true : false
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { toggleStats }
+)(Menu);
