@@ -60,9 +60,7 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
       }}
       handleFilterChange={event => {
         const { name, value } = event.target;
-        const params = name.split('.');
-        const filterName = head(params);
-        const filterProperty = last(params);
+        const [filterName, filterProperty] = name.split('.');
         setFormState({
           ...formState,
           [filterName]: {

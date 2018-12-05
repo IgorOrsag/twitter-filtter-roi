@@ -7,7 +7,7 @@ import './App.css';
 const App = ({ tweets }) => {
   return (
     <>
-      <Menu hasTweets={tweets.length} />
+      <Menu hasTweets={tweets.length ? true : false} />
       <TweetList tweets={tweets} />
     </>
   );
