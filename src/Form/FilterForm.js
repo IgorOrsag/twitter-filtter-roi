@@ -9,6 +9,7 @@ export const FilterForm = ({
   handleFilter,
   handleChange,
   handleFilterChange,
+  handleFilterReset,
   state
 }) => (
   <form onSubmit={handleSubmit}>
@@ -36,6 +37,13 @@ export const FilterForm = ({
         type="button"
       >
         Filter
+      </Button>
+      <Button
+        className="btn btn-default filter-item"
+        onClick={handleFilterReset}
+        type="button"
+      >
+        Reset
       </Button>
     </div>
     <div className="filter-container">

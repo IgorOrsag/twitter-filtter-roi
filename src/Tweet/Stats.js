@@ -1,10 +1,22 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
+import { map } from 'lodash';
 
 const BasicStat = ({ label, value }) => (
   <div className="tweet-footer">
     <label>{label}</label>
     <div>{value}</div>
+  </div>
+);
+
+const ListStat = ({ label, value }) => (
+  <div className="sort">
+    <h4>{label}</h4>
+    <div>
+      {map(value, (val, index) => (
+        <BasicStat label={index} value={val} />
+      ))}
+    </div>
   </div>
 );
 
@@ -21,9 +33,11 @@ export const Stats = ({
         <Modal.Title>Stats</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <BasicStat {...likesSum} />
-        <BasicStat {...likesPerTweet} />
-        <div>all mentions in tweets with number of unique occurences</div>
+        <div className="stats">
+          <BasicStat {...likesSum} />
+          <BasicStat {...likesPerTweet} />
+          <ListStat {...mentions} />
+        </div>
       </Modal.Body>
     </Modal>
   );

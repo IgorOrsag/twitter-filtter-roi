@@ -2,42 +2,20 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { last, head, omit, omitBy } from 'lodash';
+import { omit, omitBy } from 'lodash';
 import { FilterForm } from '../Form/FilterForm';
 import { setTweets } from '../Actions/Tweets';
 import { getParams, getUserName } from './../Utils/router';
-import { FILTER_OPERATORS } from './../Filter/operators';
+import {
+  getFilter,
+  getDefaultFilter,
+  defaultFiledState
+} from './../Utils/filter';
 
 const mapDispatchToProps = { setTweets };
 
-const defaultFiledState = { value: '', operator: FILTER_OPERATORS.EQUAL };
-const defaultMatchFiledState = {
-  value: '',
-  operator: FILTER_OPERATORS.INCLUDES
-};
-
 const Filter = ({ setTweets, location, history, filterState, userName }) => {
-  const {
-    date,
-    like,
-    tweetLength,
-    mentionCount,
-    hashtagCount,
-    occurance,
-    mentionMatch,
-    hashtagMatch
-  } = filterState;
-  const [formState, setFormState] = useState({
-    userName: userName || '',
-    date: date || defaultFiledState,
-    like: like || defaultFiledState,
-    tweetLength: tweetLength || defaultFiledState,
-    mentionCount: mentionCount || defaultFiledState,
-    hashtagCount: hashtagCount || defaultFiledState,
-    occurance: occurance || defaultMatchFiledState,
-    mentionMatch: mentionMatch || defaultMatchFiledState,
-    hashtagMatch: hashtagMatch || defaultMatchFiledState
-  });
+  const [formState, setFormState] = useState(getFilter(filterState, userName));
   return (
     <FilterForm
       state={formState}
@@ -71,6 +49,13 @@ const Filter = ({ setTweets, location, history, filterState, userName }) => {
             ...formState[filterName],
             [filterProperty]: value
           }
+        });
+      }}
+      handleFilterReset={event => {
+        event.preventDefault();
+        setFormState({
+          ...formState,
+          ...getDefaultFilter()
         });
       }}
       handleChange={event => {
