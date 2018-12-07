@@ -6,12 +6,26 @@ import {
 } from './../Request/TwitterRequest';
 
 export const setTweets = params => async dispatch => {
-  const res = await fetchTweets(params);
+  try {
+    const res = await fetchTweets(params);
+    dispatch({
+      type: ACTIONS.SET_TWEETS,
+      payload: res.body
+    });
+    return res.body;
+  } catch (err) {
+    dispatch({
+      type: ACTIONS.SET_ERROR,
+      payload: 'No tweets found'
+    });
+  }
+};
+
+export const setError = error => dispatch => {
   dispatch({
-    type: ACTIONS.SET_TWEETS,
-    payload: res.body
+    type: ACTIONS.SET_ERROR,
+    payload: error
   });
-  return res.body;
 };
 
 export const toggleStats = isToggled => dispatch => {

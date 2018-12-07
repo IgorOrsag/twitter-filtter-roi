@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './store';
-import { setToken, removeToken } from './Request/AuthApi';
+import { setToken } from './Request/AuthApi';
 
 import './App.css';
 

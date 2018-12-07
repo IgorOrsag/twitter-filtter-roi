@@ -4,11 +4,14 @@ import { sortTweets } from '../Utils/sorter';
 
 const initialState = {
   tweets: [],
-  toggleStats: false
+  toggleStats: false,
+  error: null
 };
 
 export const tweetReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ACTIONS.SET_ERROR:
+      return { ...state, error: action.payload };
     case ACTIONS.TOGGLE_STATS:
       return { ...state, toggleStats: action.payload };
     case ACTIONS.SET_TWEETS:

@@ -1,7 +1,7 @@
 import { ExampleResponse } from './ExampleResponse';
 import Defaults from 'superagent-defaults';
 
-const FETCHED_TWEETS_CONUT = 5;
+const FETCHED_TWEETS_CONUT = 50;
 
 export const fetchTweets = params => {
   const superagent = getSuperagent();

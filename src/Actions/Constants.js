@@ -1,5 +1,7 @@
 export const SET_TWEETS = 'SET_TWEETS';
 
+export const SET_ERROR = 'SET_ERROR';
+
 export const SORT_TWEETS = 'SORT_TWEETS';
 
 export const TOGGLE_STATS = 'TOGGLE_STATS';

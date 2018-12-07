@@ -1,5 +1,5 @@
 import { FILTER_OPERATORS } from './operators';
-import { filter, isUndefined, isEmpty } from 'lodash';
+import { filter, isUndefined } from 'lodash';
 
 const DAY = 86400000;
 
