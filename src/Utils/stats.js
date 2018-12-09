@@ -1,9 +1,9 @@
-import { reduce, forEach, isUndefined, uniqBy } from 'lodash';
+import { reduce, forEach, isUndefined, uniqBy, round, toPairs } from 'lodash';
 
 const getLikesSum = tweets =>
   reduce(tweets, (sum, tweet) => sum + tweet.favorite_count, 0);
 const getAverageLikes = tweets =>
-  tweets.length ? getLikesSum(tweets) / tweets.length : 0;
+  tweets.length ? round(getLikesSum(tweets) / tweets.length, 2) : 0;
 const getMentions = tweets => {
   const mentions = {};
   forEach(tweets, tweet =>
@@ -18,6 +18,8 @@ const getMentions = tweets => {
   return mentions;
 };
 
+const sortMetions = mentions => toPairs(mentions).sort((a, b) => b[1] - a[1]);
+
 export const getStats = tweets => ({
   likesSum: {
     label: 'Sum of all likes',
@@ -29,6 +31,6 @@ export const getStats = tweets => ({
   },
   mentions: {
     label: 'All mentions in tweets with number of unique occurences',
-    value: getMentions(tweets)
+    value: sortMetions(getMentions(tweets))
   }
 });

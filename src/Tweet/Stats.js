@@ -14,7 +14,7 @@ const ListStat = ({ label, value }) => (
     <h4>{label}</h4>
     <div>
       {map(value, (val, index) => (
-        <BasicStat label={index} value={val} />
+        <BasicStat key={`stat-${index}`} label={val[0]} value={val[1]} />
       ))}
     </div>
   </div>
