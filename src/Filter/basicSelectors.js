@@ -1,4 +1,5 @@
-
+import { createSelector } from 'reselect';
+import { sortTweets } from './../Utils/sorter';
 
 export const mentionCountSelector = (state, { filter: { mentionCount } }) =>
   mentionCount && {
@@ -26,4 +27,12 @@ export const likeSelector = (state, { filter: { like } }) =>
     value: +like.value,
     tweetProp: 'favorite_count'
   };
-export const tweetsSelector = state => state.tweets;
+
+const unsortedTweetsSelector = state => state.tweets;
+const sortTypeSelector = ({ sort }) => sort.sortType;
+
+export const tweetsSelector = createSelector(
+  unsortedTweetsSelector,
+  sortTypeSelector,
+  sortTweets
+);

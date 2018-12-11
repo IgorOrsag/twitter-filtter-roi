@@ -3,18 +3,10 @@ import { useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import {
-  sortDateAsc,
-  sortDateDesc,
-  sortLikesAsc,
-  sortLikesDesc
-} from '../Actions/Tweets';
-
+import { setSortType } from '../Actions/Sort';
+import { SORT } from './../Actions/Constants';
 const mapDispatchToProps = {
-  sortDateAsc,
-  sortDateDesc,
-  sortLikesAsc,
-  sortLikesDesc
+  setSortType
 };
 
 const SortButton = ({ sortAsc, sortDesc, caption }) => {
@@ -32,17 +24,17 @@ const SortButton = ({ sortAsc, sortDesc, caption }) => {
   );
 };
 
-const Sorter = ({ sortDateAsc, sortDateDesc, sortLikesAsc, sortLikesDesc }) => {
+const Sorter = ({ setSortType }) => {
   return (
     <>
       <SortButton
-        sortAsc={sortDateAsc}
-        sortDesc={sortDateDesc}
+        sortAsc={() => setSortType(SORT.DATE_ASC)}
+        sortDesc={() => setSortType(SORT.DATE_DESC)}
         caption="sort date"
       />
       <SortButton
-        sortAsc={sortLikesAsc}
-        sortDesc={sortLikesDesc}
+        sortAsc={() => setSortType(SORT.LIKES_ASC)}
+        sortDesc={() => setSortType(SORT.LIKES_DESC)}
         caption="sort likes"
       />
     </>

@@ -1,8 +1,11 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { tweetReducer } from '../Reducers/tweetReducer';
+import { reducer } from './../Reducers';
 const configureStore = () => {
-  const store = createStore(tweetReducer, compose(applyMiddleware(thunk)));
+  const store = createStore(
+    combineReducers(reducer),
+    compose(applyMiddleware(thunk))
+  );
   return store;
 };
 

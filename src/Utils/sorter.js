@@ -8,8 +8,8 @@ const sortByDateDesc = items => reverse(sortBy(items, i => i.dateTimestamp));
 const sortByLikesAsc = items => sortBy(items, i => i.favorite_count);
 const sortByLikesDesc = items => reverse(sortBy(items, i => i.favorite_count));
 
-export const sortTweets = (tweets = [], action) => {
-  switch (action.sortType) {
+export const sortTweets = (tweets = [], sortType) => {
+  switch (sortType) {
     case SORT.DATE_DESC:
       return sortByDateDesc(tweets);
     case SORT.DATE_ASC:

@@ -9,7 +9,6 @@ import Sorter from './Sorter';
 
 export const Menu = ({ hasTweets, toggleStats }) => {
   const [isFilter, setIsFilter] = useState(hasTweets);
-  console.log(hasTweets);
   return (
     <div className="form-r">
       {isFilter ? <Filter /> : <Search />}

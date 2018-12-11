@@ -1,9 +1,5 @@
 import * as ACTIONS from './Constants';
-import {
-  fetchTweets,
-  fetchFakeTweets
-  // fetchEmbed
-} from './../Request/TwitterRequest';
+import { fetchTweets, fetchFakeTweets } from './../Request/TwitterRequest';
 
 export const setTweets = params => async dispatch => {
   try {
@@ -32,34 +28,6 @@ export const toggleStats = isToggled => dispatch => {
   return dispatch({
     type: ACTIONS.TOGGLE_STATS,
     payload: isToggled
-  });
-};
-
-export const sortDateAsc = () => dispatch => {
-  return dispatch({
-    type: ACTIONS.SORT_TWEETS,
-    sortType: ACTIONS.SORT.DATE_ASC
-  });
-};
-
-export const sortDateDesc = () => dispatch => {
-  return dispatch({
-    type: ACTIONS.SORT_TWEETS,
-    sortType: ACTIONS.SORT.DATE_DESC
-  });
-};
-
-export const sortLikesAsc = () => dispatch => {
-  return dispatch({
-    type: ACTIONS.SORT_TWEETS,
-    sortType: ACTIONS.SORT.LIKES_ASC
-  });
-};
-
-export const sortLikesDesc = () => dispatch => {
-  return dispatch({
-    type: ACTIONS.SORT_TWEETS,
-    sortType: ACTIONS.SORT.LIKES_DESC
   });
 };
 

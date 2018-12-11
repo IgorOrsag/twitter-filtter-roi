@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { setError } from './../Actions/Tweets';
 
-const ErrorAlert = ({ error, setError }) => {
-  if (error) {
+const ErrorAlert = ({ error: { message }, setError }) => {
+  if (message) {
     setTimeout(() => setError(null), 1000 * 5);
-    return <Alert bsStyle="danger">{error}</Alert>;
+    return <Alert bsStyle="danger">{message}</Alert>;
   }
   return null;
 };

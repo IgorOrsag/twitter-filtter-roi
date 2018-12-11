@@ -35,7 +35,7 @@ const mapStateToProps = (state, { location: { search } }) => {
     filter: getParams(search, 'filter')
   });
   return {
-    showStats: state.toggleStats,
+    showStats: state.stats.toggleStats,
     tweets,
     stats: getStats(tweets)
   };

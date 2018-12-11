@@ -7,11 +7,11 @@ import ErrorAlert from './Tweet/ErrorAlert';
 import './App.css';
 const App = () => {
   return (
-    <>
+    <div>
       <ErrorAlert />
       <Menu />
       <TweetList />
-    </>
+    </div>
   );
 };
 

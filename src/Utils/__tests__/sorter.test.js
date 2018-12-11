@@ -38,7 +38,7 @@ const tweets = [
     date: '30.11.18 19:42'
   }
 ];
-const sortedTweets = sortTweets(tweets, { sortType: SORT.DATE_ASC });
+const sortedTweets = sortTweets(tweets, SORT.DATE_ASC);
 
 test('sorting tweets ascending', () => {
   expect(last(sortedTweets).dateTimestamp).toBeGreaterThan(
@@ -54,7 +54,7 @@ test('sorting tweets has same length', () => {
   expect(sortedTweets).toHaveLength(tweets.length);
 });
 
-const sortedTweetsDesc = sortTweets(tweets, { sortType: SORT.DATE_DESC });
+const sortedTweetsDesc = sortTweets(tweets, SORT.DATE_DESC);
 
 test('sorting tweets descending', () => {
   expect(head(sortedTweetsDesc).dateTimestamp).toBeGreaterThan(
