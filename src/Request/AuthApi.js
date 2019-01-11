@@ -1,7 +1,5 @@
 import Defaults from 'superagent-defaults';
-
-const BEARER_CREDENCIALS_ENCODED =
-  'UTVSZ3F1SE1ZS2o5RzR6UVlRY2NNUHhZbjpiNmQ2bFRYZW5rbTJnUVozdmkybzdjTFdlNXUyOERzV1Vsdm1tdmJNMnpCUjIyaFFwUg==';
+import { BEARER_CREDENCIALS_ENCODED } from './authConfig';
 
 export const setToken = () => {
   const superagent = Defaults();
